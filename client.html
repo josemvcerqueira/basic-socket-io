@@ -1,0 +1,18 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.js" integrity="sha512-oFOCo2/3DtjrJG4N27BjSLQWoiBv171sK6a+JiWjp/7agxC2nCUP358AqzxkBUb5jX8g6CYLPdSKQTbC0weCwA==" crossorigin="anonymous"></script>
+<script>
+
+  const socket = io('http://localhost:8080', {
+    withCredentials: true,
+  })
+
+
+  socket.on('connect', data => {
+    // Listen to a custom event called welcome
+    socket.on('welcome', message => {
+      console.log(message)
+    });
+
+    // Emit an event called message
+    socket.emit('my custom event', {data: 'I am so excited!'})
+  })
+</script>
